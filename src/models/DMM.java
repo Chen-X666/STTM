@@ -420,8 +420,9 @@ public class DMM
 	public void writeTopicWordPros()
 		throws IOException
 	{
-		BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-			+ expName + ".phi"));
+		BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".phi")),"utf-8"));
+
 		for (int i = 0; i < K; i++) {
 			for (int j = 0; j < V; j++) {
 				double pro = (n_w_z[i][j] + beta)
@@ -436,8 +437,8 @@ public class DMM
 	public void writeDocTopicPros()
 		throws IOException
 	{
-		BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-			+ expName + ".theta"));
+		BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".theta")),"utf-8"));
 
 		for (int i = 0; i < numDocuments; i++) {
 			int docSize = corpus.get(i).size();

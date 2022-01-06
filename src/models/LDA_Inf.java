@@ -439,8 +439,8 @@ public class LDA_Inf
 	public void writeTopicWordPros()
 		throws IOException
 	{
-		BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-			+ expName + ".phi"));
+		BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".phi")),"utf-8"));
 		for (int i = 0; i < numTopics; i++) {
 			for (int j = 0; j < vocabularySize; j++) {
 				double pro = (topicWordCount[i][j] + beta)
@@ -470,8 +470,8 @@ public class LDA_Inf
 	public void writeDocTopicPros()
 		throws IOException
 	{
-		BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-			+ expName + ".theta"));
+		BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".theta")),"utf-8"));
 		for (int i = 0; i < numDocuments; i++) {
 			for (int j = 0; j < numTopics; j++) {
 				double pro = (docTopicCount[i][j] + alpha)

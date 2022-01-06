@@ -467,8 +467,8 @@ public class WNTM
     public void writeTopicWordPros()
             throws IOException
     {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-                + expName + ".phi"));
+        BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".phi")),"utf-8"));
 
         double phiSum[] = new double[numTopics];
         for (int k = 0; k < numTopics; k++) {
@@ -499,8 +499,8 @@ public class WNTM
     public void writeDocTopicPros()
             throws IOException
     {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-                + expName + ".theta"));
+        BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".theta")),"utf-8"));
         for (int i = 0; i < numDocuments; i++) {
 
             int len = corpus.get(i).size();

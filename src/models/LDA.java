@@ -483,8 +483,8 @@ public class LDA
 	 */
 	public void writeTopicWordPros()
 			throws IOException {
-		BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-				+ expName + ".phi"));
+		BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".phi")),"utf-8"));
 		if (SAMPLE_LAG > 0) {
 			for (int k = 0; k < K; k++) {
 				for (int w = 0; w < V; w++) {
@@ -515,8 +515,8 @@ public class LDA
 	public void writeDocTopicPros()
 			throws IOException{
 
-		BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-				+ expName + ".theta"));
+		BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".theta")),"utf-8"));
 
 
 		if (SAMPLE_LAG > 0) {

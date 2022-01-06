@@ -960,8 +960,8 @@ public class GPU_PDMM {
     public void writeDocTopicPros()
             throws IOException
     {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-                + expName + ".theta"));
+        BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".theta")),"utf-8"));
 
         /** calculate P(z|w) **/
         for (int i = 0; i < vocabularySize; i++) {
@@ -1017,8 +1017,10 @@ public class GPU_PDMM {
     public void writeTopicWordPros()
             throws IOException
     {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-                + expName + ".phi"));
+//        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
+//                + expName + ".phi"));
+        BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".phi")),"utf-8"));
 
         for (int i = 0; i < numTopics; i++) {
 
