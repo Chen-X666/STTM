@@ -156,7 +156,8 @@ public class PTM {
         BufferedReader br = null;
         try {
             int indexWord = -1;
-            br = new BufferedReader(new FileReader(pathToCorpus));
+            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(pathToCorpus), "utf-8");
+            br = new BufferedReader(inputStreamReader);
             for (String doc; (doc = br.readLine()) != null;) {
 
                 if (doc.trim().length() == 0)

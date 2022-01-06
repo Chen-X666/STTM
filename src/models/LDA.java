@@ -158,7 +158,8 @@ public class LDA
 		try {
 			int indexWord = -1;
 			//通过管道获取数据
-			br = new BufferedReader(new FileReader(pathToCorpus));
+			InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(pathToCorpus), "utf-8");
+            br = new BufferedReader(inputStreamReader);
 			for (String doc; (doc = br.readLine()) != null;) {
 
 				if (doc.trim().length() == 0) {

@@ -110,7 +110,10 @@ public class DMM_Inf
 
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader(pathToUnseenCorpus));
+
+			//br = new BufferedReader(new FileReader(pathToUnseenCorpus));
+			InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(pathToUnseenCorpus), "utf-8");
+			br = new BufferedReader(inputStreamReader);
 			for (String doc; (doc = br.readLine()) != null;) {
 				if (doc.trim().length() == 0)
 					continue;
