@@ -142,7 +142,9 @@ public class BTM {
         BufferedReader br = null;
         try {
             int indexWord = -1;
-            br = new BufferedReader(new FileReader(pathToCorpus));
+            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(pathToCorpus), "utf-8");
+            br = new BufferedReader(inputStreamReader);
+
             for (String doc; (doc = br.readLine()) != null;) {
 
                 if (doc.trim().length() == 0)
@@ -321,8 +323,11 @@ public class BTM {
     public void writeParameters()
             throws IOException
     {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-                + expName + ".paras"));
+//        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
+//                + expName + ".paras"));
+        BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".paras")),"utf-8"));
+
         writer.write("-model" + "\t" + "BTM");
         writer.write("\n-corpus" + "\t" + corpusPath);
         writer.write("\n-ntopics" + "\t" + numTopics);
@@ -347,8 +352,11 @@ public class BTM {
     public void writeDictionary()
             throws IOException
     {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-                + expName + ".vocabulary"));
+//        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
+//                + expName + ".vocabulary"));
+        BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".vocabulary")),"utf-8"));
+
         for (int id = 0; id < vocabularySize; id++)
             writer.write(id2WordVocabulary.get(id) + " " + id + "\n");
         writer.close();
@@ -360,6 +368,7 @@ public class BTM {
 //                + expName + ".topWords"));
         BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
                 + expName + ".topWords")),"utf-8"));
+        System.out.println("2121212112");
 
         for (int topic_id = 0; topic_id < this.numTopics; topic_id++) {
             //writer.write("Topic" + new Integer(topic_id) + ":");
@@ -389,8 +398,10 @@ public class BTM {
     public void writeTopicWordPros()
             throws IOException
     {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-                + expName + ".phi"));
+//        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
+//                + expName + ".phi"));
+        BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".phi")),"utf-8"));
 
 
         int topic_index = 0;
@@ -424,8 +435,11 @@ public class BTM {
     public void writeDocTopicPros()
             throws IOException
     {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-                + expName + ".theta"));
+//        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
+//                + expName + ".theta"));
+
+        BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".theta")),"utf-8"));
 
         int docIndex = 0;
         for (HashMap<Long,Integer> line : this.biterm_of_corpus) {
