@@ -401,8 +401,8 @@ public class LDA_Inf
 	public void writeTopTopicalWords()
 		throws IOException
 	{
-		BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-			+ expName + ".topWords"));
+		BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".topWords")),"utf-8"));;
 
 		for (int tIndex = 0; tIndex < numTopics; tIndex++) {
 			writer.write("Topic" + new Integer(tIndex) + ":");

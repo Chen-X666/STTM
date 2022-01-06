@@ -157,6 +157,7 @@ public class LDA
 		BufferedReader br = null;
 		try {
 			int indexWord = -1;
+			//通过管道获取数据
 			br = new BufferedReader(new FileReader(pathToCorpus));
 			for (String doc; (doc = br.readLine()) != null;) {
 
@@ -442,8 +443,8 @@ public class LDA
 	public void writeTopTopicalWords()
 		throws IOException
 	{
-		BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-			+ expName + ".topWords"));
+		BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".topWords")),"utf-8"));;
 
 		for (int tIndex = 0; tIndex < K; tIndex++) {
 			//writer.write("Topic" + new Integer(tIndex) + ":");

@@ -1,12 +1,7 @@
 package models;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
-import java.io.File;
 
 import utility.FuncUtils;
 
@@ -361,8 +356,10 @@ public class BTM {
 
     private void writeTopTopicalWords() throws IOException {
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
-                + expName + ".topWords"));
+//        BufferedWriter writer = new BufferedWriter(new FileWriter(folderPath
+//                + expName + ".topWords"));
+        BufferedWriter writer  = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(folderPath
+                + expName + ".topWords")),"utf-8"));
 
         for (int topic_id = 0; topic_id < this.numTopics; topic_id++) {
             //writer.write("Topic" + new Integer(topic_id) + ":");
@@ -472,6 +469,9 @@ public class BTM {
     public static void main(String args[])
             throws Exception
     {
+
+
+
         BTM btm = new BTM("dataset/Pascal_Flickr.txt", 20, 0.1, 0.1, 500, 10, "Pascal_FlickrBTM");
         btm.inference();
     }
